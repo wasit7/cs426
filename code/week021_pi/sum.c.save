@@ -1,0 +1,37 @@
+
+#include <omp.h>
+#include <stdio.h>
+
+int main(void){
+        int sum[8]={};
+        #pragma omp parallel
+        {
+                int ID = omp_get_thread_num();
+                //int x[1000];
+                int i;
+                //initialization
+                for(i=ID*1;i<(ID+1)*1;i++){
+                        sum[ID]+=i;
+                }
+                printf("core(%d) sum(%d)\n",ID,sum[ID]);
+		if(!(ID%2)){
+			#pragma omp atomic
+			sum[ID]+=sum[ID+1];
+		}
+		if(!(ID%4)){
+			#pragma omp atomic
+			sum[ID]+=sum[ID+2];
+		}
+		if(!(ID%8)){
+			#pragma omp atomic
+			sum[ID]+=sum[ID+4];			printf("-->sum(0): %d\n",sum[0]);
+//		}
+	}
+	int i;
+	for(i=1;i<8;i++){
+		sum[0]+=sum[i];
+	}
+	printf("-->sum(0): %d\n",sum[0]);
+        return 0;
+}
+
