@@ -17,13 +17,9 @@ x = np.linspace(0, 7, 8)
 y = np.linspace(0, 7, 8)
 B, A = np.meshgrid(x, y)
 
-#dv.scatter('a',yv)
-#dv.scatter('b',xv.transpose())
-#dv.execute('c=np.dot(a,b.transpose())')
 
 #rmax is a number of row of the output matrix
 rmax=A.shape[0]
-
 #cmax is a number of column of the output matrix
 cmax=B.shape[1]
 
@@ -37,8 +33,6 @@ for i in xrange(r_par):
     x=i*c_par+np.arange(c_par) 
     for j in x:
         c[j]['a']=A[ri:rf,:]
-#    c[i*c_par:(i+1)*c_par]['a']=A[ri:rf,:]
-    
     print 'core: ',x
     print 'row ',ri,':',rf
     ri=rf
