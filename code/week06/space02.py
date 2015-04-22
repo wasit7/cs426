@@ -8,7 +8,7 @@ def transition(sx,sy,vx,vy):
     m=1.0
     dt=0.01
     G=0.1
-    epsilon=1e-6
+    epsilon=1e-3
     # http://http.developer.nvidia.com/GPUGems3/gpugems3_ch31.html
     
     for i in xrange(len(sx)):
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     #init particle
-    N=100
+    N=200
     sx=np.random.rand(N)*2.0-1.0
     sy=np.random.rand(N)*2.0-1.0
     vx=np.zeros(N)
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         #display
         plt.plot(sx,sy,'.b')
         plt.hold(True)
-        #plt.plot(sx[0],sy[0],'.r')
+        plt.plot(sx[0],sy[0],'.r')
         plt.hold(False)
         plt.axis([-2,2,-2,2])
         plt.draw()
