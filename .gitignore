@@ -29,3 +29,5 @@
 
 # Private directories
 _private/
+*.docx
+*.ppt
