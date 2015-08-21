@@ -5,6 +5,9 @@ Created on Wed Apr 22 11:17:44 2015
 @author: Wasit
 """
 
+#start bokeh-server
+#C:\Users\Wasit>c:\Anaconda\Scripts\bokeh-server.exe
+
 import time
 import numpy as np
 from six.moves import zip

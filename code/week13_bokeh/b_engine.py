@@ -8,7 +8,7 @@ import numpy as np
 def transition(sx,sy,vx,vy,m,start=0,stop=3):
     dt=0.5
     G=1.0
-    epsilon=1e0
+    epsilon_sqr=1e0
     # http://http.developer.nvidia.com/GPUGems3/gpugems3_ch31.html
     sxk=sx[start:stop]
     syk=sy[start:stop]
@@ -21,10 +21,14 @@ def transition(sx,sy,vx,vy,m,start=0,stop=3):
             if i!=j:
                 rx_ij=sx[j]-sx[i]
                 ry_ij=sy[j]-sy[i]
-                f=(rx_ij**2 + ry_ij**2 + epsilon*2)**-1.5
-                axk[k]=axk[k] + G*m[i]*rx_ij*f
-                ayk[k]=ayk[k] + G*m[i]*ry_ij*f
-                
+                rsq=rx_ij**2 + ry_ij**2 
+                f=(rsq+epsilon_sqr)**-1.5
+                if rsq > (m[i]+m[j])**2:
+                    axk[k]=axk[k] + G*m[i]*rx_ij*f
+                    ayk[k]=ayk[k] + G*m[i]*ry_ij*f
+                else:
+                    axk[k]=axk[k] - 0.1*G*m[i]*rx_ij*f
+                    ayk[k]=ayk[k] - 0.1*G*m[i]*ry_ij*f
     vxk=vxk+axk*dt
     vyk=vyk+ayk*dt    
     sxk = sxk + vxk*dt

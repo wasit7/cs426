@@ -4,7 +4,7 @@ Created on Wed Apr 22 14:45:42 2015
 
 @author: Wasit
 """
-
+#parallel
 import time
 import numpy as np
 from six.moves import zip
@@ -13,18 +13,20 @@ from bokeh.plotting import *
 def part(n=20, m=3):
     base = n//m;
     extra = n-m*(n//m)
-    x=np.ones(m,dtype=np.int32)*base
-    x[0:extra]=base+1
-    y = [0]
+    #loads is list of number of tasks per core
+    loads=np.ones(m,dtype=np.int32)*base
+    loads[0:extra]=base+1
+    #taskboundary is the list  of starting element of each task
+    tb = [0]
     c = 0
-    for i in x:
-        y.append(y[c] +i)
+    for load in loads:
+        tb.append(tb[c] +load)
         c+=1  
-    return y
+    return tb
     
     
 if __name__ == "__main__":    
-    N = 150    
+    N = 20    
     sx = np.random.random(size=N) * 100
     sy = np.random.random(size=N) * 100
     vx = np.zeros(shape=N)

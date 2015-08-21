@@ -4,7 +4,7 @@ Created on Wed Apr 22 14:45:42 2015
 
 @author: Wasit
 """
-
+#sequential
 import time
 import numpy as np
 from six.moves import zip
@@ -24,7 +24,7 @@ def part(n=20, m=3):
     
     
 if __name__ == "__main__":    
-    N = 150  
+    N =   200
     sx = np.random.random(size=N) * 100
     sy = np.random.random(size=N) * 100
     vx = np.zeros(shape=N)
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     while True:
         print sx[0]
         sx,sy,vx,vy = be.transition(sx,sy,vx,vy,m,0,N)              
-        ds.data["x"] = sx
+        ds.data["x"] = (sx)
         ds.data["y"] = sy
         cursession().store_objects(ds)
         #time.sleep(0.01)
