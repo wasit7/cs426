@@ -3,11 +3,12 @@ using namespace std;
 #include <omp.h>
 #include <random>
 #include <math.h>
+#include <time.h>
 
 #define N_cores 8
 int main(void){
         unsigned long long sum[N_cores]={};
-	int spt = 1e7;//sample per thread
+	int spt = 1e8;//sample per thread
 	int ID,i;
         #pragma omp parallel shared(sum,spt) private(ID,i)
         {
@@ -43,8 +44,7 @@ int main(void){
 		}
 	}
 
-	cout<<"M_PI  : "<<M_PI<<std::endl;
+	cout<<"M_PI  : "<<3.14159<<std::endl;
 	cout<<"Result: "<<(double)sum[0]/N_cores/spt*4.0f<<std::endl;
         return 0;
 }
-

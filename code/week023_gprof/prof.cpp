@@ -3,7 +3,7 @@ using namespace std;
 #include <omp.h>
 #include <random>
 #include <math.h>
-
+#include <time.h>
 #define N_cores 8
 int main(void){
         unsigned long long sum=0;
@@ -26,7 +26,7 @@ int main(void){
                 }
 	}
 
-	cout<<"M_PI  : "<<M_PI<<std::endl;
+	cout<<"PI  : "<<3.14159<<std::endl;
 	cout<<"Result: "<<(double)sum/N_cores/spt*4.0f<<std::endl;
         return 0;
 }
