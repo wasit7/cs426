@@ -5,4 +5,4 @@ screen -S ipc -d -m ./controller.sh
 ./engine.sh
 scp $conjson $engjson 
 scp engine.sh ${USER}@10.100.20.201:${HOME}
-ssh wasit@10.100.20.201 ${HOME}/engine.sh
+ssh ${USER}@10.100.20.201 ${HOME}/engine.sh
