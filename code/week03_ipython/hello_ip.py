@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep 03 18:01:21 2015
+
+@author: Wasit
+"""
+
 ####test ipython.parallel
 # to start ipcluster use
 # $ipcluster start -n 4﻿
