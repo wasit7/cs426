@@ -1,0 +1,31 @@
+2015-09-24 02:13:55	train
+[   0.42s] [   0.42s] {main::train>> m=master(dsetname)
+master: 	minbagsize:50 maxdepth:20 engines_path:
+		training/dataset00.pic
+		training/dataset01.pic
+		training/dataset02.pic
+		training/dataset03.pic
+		training/dataset04.pic
+		training/dataset05.pic
+		training/dataset06.pic
+		training/dataset07.pic}
+[   0.13s] [   0.55s] {main::train>> m.reset()}
+[ 401.49s] [ 402.04s] {main::train>> m.train(uniquename)}
+[   0.50s] [ 402.53s] {main::train>> recording tree}
+2015-09-24 02:20:37	recall
+[   0.26s] [ 402.80s] {main::train>> loading tree}
+[   0.00s] [ 402.80s] {main::train>> loading dset
+dataset: 	datset_pickle: path=./"training/dataset00.pic" cmax=90, theta_dim=1, theta_range=10 
+        	size=8905, label.shape=(8905L,), I.shape=(8905L, 10L)}
+[   2.75s] [ 405.56s] {main::train>> classifying
+recall rate: 60.4267265581%}
+[   0.00s] [ 405.56s] {main::train>> classifying
+confusion matrix: 
+[[  0.   0.   0. ...,   0.   0.   0.]
+ [  0.  34.   0. ...,   0.   0.   0.]
+ [  0.   0.   0. ...,   0.   0.   0.]
+ ..., 
+ [  0.   0.   0. ...,   0.   0.   0.]
+ [  0.   0.   0. ...,   0.   0.   0.]
+ [  0.   0.   0. ...,   0.   0.   0.]]}
+[   0.00s] [ 405.56s] {__del__}
