@@ -28,6 +28,7 @@ void showPath(int N, int* path, float* A){
     cout<<endl<<"    Total distance: "<<totalDistance(N,path,A)<<endl;
 }
 void twoOpt(int N, int* path, float* A,int M){
+    cout<<">>>twoOpt_omp"<<endl;
     int na,nb,nc,nx,ny,nz,i,j;
     srand (time(NULL));
     for(int k=0; k<M; k++){
@@ -48,7 +49,7 @@ void twoOpt(int N, int* path, float* A,int M){
     }
 }
 void twoOpt_omp(int N, int* path, float* A,int M){
-
+    cout<<">>>twoOpt_omp"<<endl;
     float* ptd=new float[Ncores];//parallel total distance
     int** ppath=new int* [Ncores];
     for(int i=0; i<Ncores; i++){
@@ -118,7 +119,7 @@ int main(){
                 file >> A[r*N+c];
             }
         }
-        cout<<">>>twoOpt"<<endl;
+
         twoOpt_omp(N, path, A,1e7);
         showPath(N,path,A);
     }
